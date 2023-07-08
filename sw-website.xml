@@ -1,0 +1,33 @@
+<Container version="2">
+  <Name>sw-website</Name>
+  <Repository>hintab/sw-website</Repository>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>9211</HostPort>
+        <ContainerPort>80</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Database>
+    <Name>MariaDB</Name>
+    <Image>mariadb</Image>
+    <Networking>
+      <Mode>bridge</Mode>
+      <Publish>
+        <HostPort>3306</HostPort>
+        <ContainerPort>3306</ContainerPort>
+      </Publish>
+    </Networking>
+    <Environment>
+      <Variable>
+        <Name>MYSQL_ROOT_PASSWORD</Name>
+        <Value/>
+        <Description>Enter the root password for MariaDB</Description>
+      </Variable>
+    </Environment>
+  </Database>
+  <ExtraParams></ExtraParams>
+</Container>
