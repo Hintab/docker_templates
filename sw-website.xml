@@ -7,7 +7,7 @@
     <Publish>
       <Port>
         <HostPort>9211</HostPort>
-        <ContainerPort>9211</ContainerPort>
+        <ContainerPort>{PORT}</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
@@ -15,6 +15,13 @@
   <Database>
     <Name>MariaDB</Name>
     <Image>mariadb</Image>
+    <Networking>
+      <Mode>bridge</Mode>
+      <Publish>
+        <HostPort>3306</HostPort>
+        <ContainerPort>3306</ContainerPort>
+      </Publish>
+    </Networking>
     <Environment>
       <Variable>
         <Name>MYSQL_ROOT_PASSWORD</Name>
@@ -23,6 +30,6 @@
     </Environment>
   </Database>
   <ExtraParams></ExtraParams>
-  <Config Name="Port" Target="HostPort" Default="9211" Description="The port on which the website should run." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="Port" Target="ContainerPort" Default="9211" Description="The port on which the website should run." Type="Port" Display="always" Required="true" Mask="false"/>
   <Config Name="DB_PASS" Target="MYSQL_ROOT_PASSWORD" Default="" Description="DB Password" Type="Variable" Display="always" Required="false" Mask="false"/>
 </Container>
