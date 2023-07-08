@@ -5,7 +5,7 @@
     <Mode>bridge</Mode>
     <Publish>
       <Port>
-        <HostPort>8080</HostPort>
+        <HostPort>$HOST_PORT$</HostPort>
         <ContainerPort>80</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
@@ -14,7 +14,7 @@
   <Config>
     <Variable>
       <Name>ENV_VARIABLE</Name>
-      <Value>your_value</Value>
+      <Value>$YOUR_VALUE$</Value>
     </Variable>
   </Config>
 </Container>
