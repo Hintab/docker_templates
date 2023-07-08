@@ -25,11 +25,11 @@
     <Environment>
       <Variable>
         <Name>MYSQL_ROOT_PASSWORD</Name>
-        <Value>your_root_password</Value>
+        <Value/>
       </Variable>
     </Environment>
   </Database>
   <ExtraParams></ExtraParams>
   <Config Name="Port" Target="HostPort" Default="9211" Description="The port on which the website should run." Type="Port" Display="always" Required="true" Mask="false"/>
-  <Config Name="Database Connection" Target="ContainerPort" Default="3306" Description="The port for the database connection." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="DB_PASS" Target="MYSQL_ROOT_PASSWORD" Default="" Description="DB Password" Type="Variable" Display="always" Required="false" Mask="false"/>
 </Container>
