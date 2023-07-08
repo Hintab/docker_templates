@@ -1,24 +1,48 @@
+<?xml version="1.0"?>
 <Container version="2">
-  <Name>test-container</Name>
-  <Repository>your-dockerhub-username/test-container</Repository>
+  <Name>wikijs</Name>
+  <Repository>lscr.io/linuxserver/wikijs</Repository>
+  <Registry>https://github.com/orgs/linuxserver/packages/container/package/wikijs</Registry>
+  <Network>swag</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/linuxserver/docker-wikijs/issues/new/choose</Support>
+  <Project>https://github.com/Requarks/wiki</Project>
+  <Overview>Wikijs(https://github.com/Requarks/wiki) A modern, lightweight and powerful wiki app built on NodeJS.</Overview>
+  <Category>Cloud: Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/linuxserver/templates/master/unraid/wikijs.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/wikijs-logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1682878338</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Wikijs(https://github.com/Requarks/wiki) A modern, lightweight and powerful wiki app built on NodeJS.</Description>
   <Networking>
-    <Mode>bridge</Mode>
+    <Mode>swag</Mode>
     <Publish>
       <Port>
-        <HostPort>$HOST_PORT$</HostPort>
-        <ContainerPort>80</ContainerPort>
+        <HostPort>3000</HostPort>
+        <ContainerPort>3000</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
   </Networking>
-  <Config>
-    <Variable>
-      <Name>ENV_VARIABLE</Name>
-      <Value>$YOUR_VALUE$</Value>
-    </Variable>
-  </Config>
-</Container>
-  GNU nano 5.3                                                                                                                                           my-wikijs.xml                                                                                                                                                      
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/WikiData/</HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/wikijs</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
   <Environment>
     <Variable>
       <Value>sqlite</Value>
