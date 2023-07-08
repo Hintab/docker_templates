@@ -1,130 +1,20 @@
-<?xml version="1.0"?>
 <Container version="2">
-  <Name>swag</Name>
-  <Repository>lscr.io/linuxserver/swag</Repository>
-  <Registry>https://github.com/orgs/linuxserver/packages/container/package/swag</Registry>
-  <Network>swag</Network>
-  <MyIP/>
-  <Shell>bash</Shell>
-  <Privileged>true</Privileged>
-  <Support>https://github.com/linuxserver/docker-swag/issues/new/choose</Support>
-  <Project>https://linuxserver.io</Project>
-  <Overview>SWAG - Secure Web Application Gateway (formerly known as letsencrypt, no relation to Let's Encrypt&#x2122;) sets up an Nginx webserver and reverse proxy with php support and a built-in certbot client that automates free SSL server certificate generation and renewal processes (Let's Encrypt and ZeroSSL)>
-  <Category>Tools:Utilities Network:Web</Category>
-  <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/linuxserver/templates/master/unraid/swag.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver-ls-logo.png</Icon>
-  <ExtraParams>--cap-add=NET_ADMIN</ExtraParams>
-  <PostArgs/>
-  <CPUset/>
-  <DateInstalled>1682877812</DateInstalled>
-  <DonateText/>
-  <DonateLink/>
-  <Description>SWAG - Secure Web Application Gateway (formerly known as letsencrypt, no relation to Let's Encrypt&#x2122;) sets up an Nginx webserver and reverse proxy with php support and a built-in certbot client that automates free SSL server certificate generation and renewal processes (Let's Encrypt and ZeroS>
+  <Name>test-container</Name>
+  <Repository>your-dockerhub-username/test-container</Repository>
   <Networking>
-    <Mode>swag</Mode>
+    <Mode>bridge</Mode>
     <Publish>
       <Port>
-        <HostPort>444</HostPort>
-        <ContainerPort>443</ContainerPort>
-        <Protocol>tcp</Protocol>
-      </Port>
-      <Port>
-        <HostPort>81</HostPort>
+        <HostPort>8080</HostPort>
         <ContainerPort>80</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
   </Networking>
-  <Data>
-    <Volume>
-      <HostDir>/mnt/user/appdata/swag</HostDir>
-      <ContainerDir>/config</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-  </Data>
-  <Environment>
+  <Config>
     <Variable>
-      <Value>hintab.org</Value>
-      <Name>URL</Name>
-      <Mode>{3}</Mode>
+      <Name>ENV_VARIABLE</Name>
+      <Value>your_value</Value>
     </Variable>
-    <Variable>
-      <Value>http</Value>
-      <Name>VALIDATION</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>ha,mtr1,mtr,nextcloud,ombi,recipe,vm,overseerr,vs</Value>
-      <Name>SUBDOMAINS</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value/>
-      <Name>CERTPROVIDER</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>cloudflare</Value>
-      <Name>DNSPLUGIN</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value/>
-      <Name>PROPAGATION</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value/>
-      <Name>EMAIL</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>false</Value>
-      <Name>ONLY_SUBDOMAINS</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value/>
-      <Name>EXTRA_DOMAINS</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>false</Value>
-      <Name>STAGING</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>99</Value>
-      <Name>PUID</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>100</Value>
-      <Name>PGID</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-    <Variable>
-      <Value>022</Value>
-      <Name>UMASK</Name>
-      <Mode>{3}</Mode>
-    </Variable>
-  </Environment>
-  <Labels/>
-  <Config Name="WebUI" Target="443" Default="443" Mode="tcp" Description="Https port" Type="Port" Display="always" Required="true" Mask="false">444</Config>
-  <Config Name="Port: 80" Target="80" Default="80" Mode="tcp" Description="Http port (required for http validation and http - https redirect)" Type="Port" Display="always" Required="false" Mask="false">81</Config>
-  <Config Name="URL" Target="URL" Default="yourdomain.url" Mode="{3}" Description="Top url you have control over (`customdomain.com` if you own it, or `customsubdomain.ddnsprovider.com` if dynamic dns)." Type="Variable" Display="always" Required="true" Mask="false">hintab.org</Config>
-  <Config Name="VALIDATION" Target="VALIDATION" Default="http" Mode="{3}" Description="Certbot validation method to use, options are `http` or `dns` (`dns` method also requires `DNSPLUGIN` variable set)." Type="Variable" Display="always" Required="true" Mask="false">http</Config>
-  <Config Name="SUBDOMAINS" Target="SUBDOMAINS" Default="www," Mode="{3}" Description="Subdomains you'd like the cert to cover (comma separated, no spaces) ie. `www,ftp,cloud`. For a wildcard cert, set this *exactly* to `wildcard` (wildcard cert is available via `dns` validation only)" Type="Variable" Display="alw>
-  <Config Name="CERTPROVIDER" Target="CERTPROVIDER" Default="" Mode="{3}" Description="Optionally define the cert provider. Set to `zerossl` for ZeroSSL certs (requires existing ZeroSSL account(https://app.zerossl.com/signup) and the e-mail address entered in `EMAIL` env var). Otherwise defaults to Let's Encrypt.">
-  <Config Name="DNSPLUGIN" Target="DNSPLUGIN" Default="cloudflare" Mode="{3}" Description="Required if `VALIDATION` is set to `dns`. Options are `acmedns`, `aliyun`, `azure`, `cloudflare`, `cpanel`, `desec`, `digitalocean`, `directadmin`, `dnsimple`, `dnsmadeeasy`, `dnspod`, `do`, `domeneshop`, `duckdns`, `dynu`, >
-  <Config Name="PROPAGATION" Target="PROPAGATION" Default="" Mode="{3}" Description="Optionally override (in seconds) the default propagation time for the dns plugins." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="EMAIL" Target="EMAIL" Default="" Mode="{3}" Description="Optional e-mail address used for cert expiration notifications (Required for ZeroSSL)." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="ONLY_SUBDOMAINS" Target="ONLY_SUBDOMAINS" Default="false" Mode="{3}" Description="If you wish to get certs only for certain subdomains, but not the main domain (main domain may be hosted on another machine and cannot be validated), set this to `true`" Type="Variable" Display="always" Required="fals>
-  <Config Name="EXTRA_DOMAINS" Target="EXTRA_DOMAINS" Default="" Mode="{3}" Description="Additional fully qualified domain names (comma separated, no spaces) ie. `extradomain.com,subdomain.anotherdomain.org,*.anotherdomain.org`" Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="STAGING" Target="STAGING" Default="false" Mode="{3}" Description="Set to `true` to retrieve certs in staging mode. Rate limits will be much higher, but the resulting cert will not pass the browser's security test. Only to be used for testing purposes." Type="Variable" Display="always" Required="fal>
-  <Config Name="Appdata" Target="/config" Default="" Mode="rw" Description="All the config files including the webroot reside here." Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/swag</Config>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="{3}" Description="Container Variable: PUID" Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="{3}" Description="Container Variable: PGID" Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
-  <Config Name="UMASK" Target="UMASK" Default="022" Mode="{3}" Description="Container Variable: UMASK" Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+  </Config>
 </Container>
