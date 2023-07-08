@@ -15,13 +15,6 @@
   <Database>
     <Name>MariaDB</Name>
     <Image>mariadb</Image>
-    <Networking>
-      <Mode>bridge</Mode>
-      <Publish>
-        <HostPort>3306</HostPort>
-        <ContainerPort>3306</ContainerPort>
-      </Publish>
-    </Networking>
     <Environment>
       <Variable>
         <Name>MYSQL_ROOT_PASSWORD</Name>
