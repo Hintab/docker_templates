@@ -12,24 +12,28 @@
       </Port>
     </Publish>
   </Networking>
-  <Database>
-    <Name>MariaDB</Name>
-    <Image>mariadb</Image>
-    <Networking>
-      <Mode>bridge</Mode>
-      <Publish>
-        <HostPort>3306</HostPort>
-        <ContainerPort>3306</ContainerPort>
-      </Publish>
-    </Networking>
-    <Environment>
-      <Variable>
-        <Name>MYSQL_ROOT_PASSWORD</Name>
-        <Value/>
-      </Variable>
-    </Environment>
-  </Database>
+   <Environment>
+    <Variable>
+      <Name>SERVER_NAME</Name>
+      <Value/>
+    </Variable>
+    <Variable>
+      <Name>DATABASE_NAME</Name>
+      <Value/>
+    </Variable>
+    <Variable>
+      <Name>DATABASE_USERNAME</Name>
+      <Value/>
+    </Variable>
+    <Variable>
+      <Name>DATABASE_PASSWORD</Name>
+      <Value/>
+    </Variable>
+  </Environment>
   <ExtraParams></ExtraParams>
   <Config Name="Port" Target="9211" Default="9211" Description="The port on which the website should run." Type="Port" Display="always" Required="true" Mask="false"/>
-  <Config Name="DB_PASS" Target="MYSQL_ROOT_PASSWORD" Default="" Description="DB Password" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Server Name" Target="SERVER_NAME" Default="" Description="Server name for the database connection." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Database Name" Target="DATABASE_NAME" Default="" Description="Name of the database to connect to." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Database Username" Target="DATABASE_USERNAME" Default="" Description="Username for the database connection." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Database Password" Target="DATABASE_PASSWORD" Default="" Description="Password for the database connection." Type="Variable" Display="always" Required="true" Mask="true"/>
 </Container>
