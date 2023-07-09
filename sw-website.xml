@@ -40,5 +40,5 @@
   <Config Name="Database Name" Target="DATABASE_NAME" Default="" Description="Name of the database to connect to." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="Database Username" Target="DATABASE_USERNAME" Default="" Description="Username for the database connection." Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="Database Password" Target="DATABASE_PASSWORD" Default="" Description="Password for the database connection." Type="Variable" Display="always" Required="true" Mask="true"/>
-  <Config Name="API KEY" Target="API_KEY" Default="" Description="Google Maps API Key" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="API KEY" Target="API_KEY" Default="" Description="Google Maps API Key" Type="Variable" Display="always" Required="true" Mask="false"/>
 </Container>
