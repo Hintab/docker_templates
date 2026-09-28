@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Frigate-0.18.0</Name>
+  <Repository>ghcr.io/blakeblackshear/frigate:0.18.0</Repository>
+  <Registry>https://github.com/blakeblackshear/frigate/pkgs/container/frigate</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/blakeblackshear/frigate/issues</Support>
+  <Project>https://frigate.video/</Project>
+  <Overview>NVR with real-time local object detection for IP cameras using OpenCV and TensorFlow.</Overview>
+  <Category>MediaApp:Video Security:</Category>
+  <WebUI>http://[IP]:[PORT:5000]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/blakeblackshear/frigate/dev/docs/static/img/frigate.png</Icon>
+  <ExtraParams>--shm-size=1g</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled></DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Web UI" Target="5000" Default="5000" Mode="tcp" Description="Frigate Web Interface" Type="Port" Display="always" Required="true" Mask="false">5000</Config>
+  <Config Name="RTSP Feed Port" Target="8554" Default="8554" Mode="tcp" Description="RTSP re-stream port" Type="Port" Display="always" Required="false" Mask="false">8554</Config>
+  <Config Name="WebRTC TCP" Target="8555" Default="8555" Mode="tcp" Description="WebRTC TCP stream port" Type="Port" Display="always" Required="false" Mask="false">8555</Config>
+  <Config Name="WebRTC UDP" Target="8555" Default="8555" Mode="udp" Description="WebRTC UDP stream port" Type="Port" Display="always" Required="false" Mask="false">8555</Config>
+  <Config Name="Appdata / Config" Target="/config" Default="/mnt/user/appdata/frigate" Mode="rw" Description="Location of frigate.yml configuration file and SQLite database." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frigate</Config>
+  <Config Name="Media / Storage" Target="/media/frigate" Default="/mnt/user/appdata/frigate/media" Mode="rw" Description="Location for recordings, snapshots, and exports." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/frigate/media</Config>
+  <Config Name="RAM Cache" Target="/tmp/cache" Default="tmpfs" Mode="rw" Description="Tmpfs RAM cache for recording segments to reduce disk wear." Type="Path" Display="advanced" Required="false" Mask="false">tmpfs</Config>
+</Container>
