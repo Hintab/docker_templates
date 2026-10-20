@@ -13,7 +13,7 @@
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/Hintab/docker_templates/main/moneysite.xml</TemplateURL>
-  <Icon/>
+  <Icon>https://raw.githubusercontent.com/Hintab/moneysite/main/MoneySite/wwwroot/icons/icon-512.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
