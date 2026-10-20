@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>MoneySite</Name>
+  <Repository>ghcr.io/hintab/moneysite:latest</Repository>
+  <Registry>https://github.com/Hintab/moneysite/pkgs/container/moneysite</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Hintab/moneysite/issues</Support>
+  <Project>https://github.com/Hintab/moneysite</Project>
+  <Overview>Personal money manager: transactions, income vs spending, net worth, credit cards and investments, synced from your banks through Plaid. WARNING: there is no login. Keep it on your home network only and never port-forward it.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Hintab/docker_templates/main/moneysite.xml</TemplateURL>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled></DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>A Plaid account (client ID and secret). Before the first start, the appdata folder must be owned by UID 1654: chown -R 1654:1654 /mnt/user/appdata/moneysite</Requires>
+
+  <!-- Ports -->
+  <Config Name="Web UI" Target="8080" Default="8080" Mode="tcp" Description="Web page port. Home network only: never port-forward it." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+
+  <!-- Paths -->
+  <Config Name="Appdata" Target="/data" Default="/mnt/user/appdata/moneysite" Mode="rw" Description="Holds money.db: your transactions, settings and Plaid access tokens. Must be owned by UID 1654." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/moneysite</Config>
+
+  <!-- Environment Variables -->
+  <Config Name="Plaid Client ID" Target="Plaid__ClientID" Default="" Mode="" Description="From the Plaid dashboard (Developers, Keys). Use the same one the app was linked with, or banks must be re-linked." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Plaid Secret" Target="Plaid__ClientSecret" Default="" Mode="" Description="From the Plaid dashboard (Developers, Keys)." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Plaid Environment" Target="Plaid__Environment" Default="production|sandbox" Mode="" Description="production for real banks (Plaid's Trial plan is production); sandbox for test data." Type="Variable" Display="always" Required="true" Mask="false">production</Config>
+  <Config Name="Time Zone" Target="TZ" Default="America/New_York" Mode="" Description="Your time zone. Sets what counts as today and where months start." Type="Variable" Display="always" Required="true" Mask="false">America/New_York</Config>
+  <Config Name="Database Path" Target="MONEYSITE_DB_PATH" Default="/data/money.db" Mode="" Description="Where the database lives inside the container. Leave as is." Type="Variable" Display="advanced" Required="true" Mask="false">/data/money.db</Config>
+</Container>
